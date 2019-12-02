@@ -1,5 +1,4 @@
 # coding: utf-8
-$CLASSPATH << "/usr/lib/libreoffice/program/classes/juh.jar"
 
 # ライブラリをロード
 require "./libo_calc"
