@@ -39,10 +39,10 @@ class CalcDocument
 
   def get_sheets
     sheets = []
-    sheetNames = @doc.getSheets().getElementNames()
+    sheet_names = @doc.getSheets().getElementNames()
 
-    (0...sheetNames.size).each do |i|
-      sheetName = sheetNames[i]
+    (0...sheet_names.size).each do |i|
+      sheetName = sheet_names[i]
       sheet = get_sheet_by_index(i)
       sheets << Sheet.new(sheet, sheetName)
     end
@@ -53,14 +53,14 @@ class CalcDocument
   def get_sheet_by_index(index)
     sheets = @doc.getSheets()
 
-    indexAccess = UnoRuntime.queryInterface(
+    index_access = UnoRuntime.queryInterface(
       Java::ComSunStarContainer::XIndexAccess.java_class,
       sheets
     )
 
     UnoRuntime.queryInterface(
       Java::ComSunStarSheet::XSpreadsheet.java_class,
-      indexAccess.getByIndex(index)
+      index_access.getByIndex(index)
     )
   end
 
@@ -110,7 +110,7 @@ module Calc
         context
     )
 
-    componentLoader = UnoRuntime.queryInterface(
+    component_loader = UnoRuntime.queryInterface(
       Java::ComSunStarFrame::XComponentLoader.java_class,
       desktop
     )
@@ -118,10 +118,10 @@ module Calc
     # GUI表示なし
     args = [arg("Hidden", true)]
 
-    fileUrl = "file://" + File.expand_path(path)
+    file_url = "file://" + File.expand_path(path)
 
-    component = componentLoader.loadComponentFromURL(
-      fileUrl, "_blank", 0, args
+    component = component_loader.loadComponentFromURL(
+      file_url, "_blank", 0, args
     )
 
     begin
