@@ -1,4 +1,5 @@
 # coding: utf-8
+
 $CLASSPATH << "/usr/lib/libreoffice/program/classes/juh.jar"
 $CLASSPATH << "/usr/lib/libreoffice/program/classes/ridl.jar"
 $CLASSPATH << "/usr/share/libreoffice/program/classes/unoil.jar"
@@ -16,8 +17,8 @@ class Sheet
   end
 
   def get(ci, ri)
-	cell = @sheet.getCellByPosition(ci, ri)
-	cell.getFormula().to_s
+    cell = @sheet.getCellByPosition(ci, ri)
+    cell.getFormula().to_s
   end
 
   def set(ci, ri, val)
@@ -37,7 +38,7 @@ class CalcDocument
   end
 
   def get_sheets
-	sheets = []
+    sheets = []
     sheetNames = @doc.getSheets().getElementNames()
 
     (0...sheetNames.size).each do |i|
@@ -50,15 +51,15 @@ class CalcDocument
   end
 
   def get_sheet_by_index(index)
-	sheets = @doc.getSheets()
+    sheets = @doc.getSheets()
 
-	indexAccess = UnoRuntime.queryInterface(
+    indexAccess = UnoRuntime.queryInterface(
       Java::ComSunStarContainer::XIndexAccess.java_class,
       sheets
     )
 
-	UnoRuntime.queryInterface(
-	  Java::ComSunStarSheet::XSpreadsheet.java_class,
+    UnoRuntime.queryInterface(
+      Java::ComSunStarSheet::XSpreadsheet.java_class,
       indexAccess.getByIndex(index)
     )
   end
