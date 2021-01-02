@@ -25,6 +25,57 @@ class Sheet
     cell = @sheet.getCellByPosition(ci, ri)
     cell.setFormula(val.to_s)
   end
+
+  # @return XCellRange
+  def _used_cell_range
+    # XSheetCellCursor
+    cursor = @sheet.createCursor()
+
+    # XUsedAreaCursor
+    used_area_cursor = UnoRuntime.queryInterface(
+      Java::ComSunStarSheet::XUsedAreaCursor.java_class,
+      cursor
+    )
+
+    used_area_cursor.gotoEndOfUsedArea(false);
+
+    UnoRuntime.queryInterface(
+      Java::ComSunStarTable::XCellRange.java_class,
+      used_area_cursor
+    )
+  end
+
+  def used_row_index_max
+    # XCellRange
+    used_cell_range = _used_cell_range()
+
+    # XCellRangeAddressable
+    used_cell_range_addressable = UnoRuntime.queryInterface(
+      Java::ComSunStarSheet::XCellRangeAddressable.java_class,
+      used_cell_range
+    )
+
+    # CellRangeAddress
+    cell_range_address = used_cell_range_addressable.getRangeAddress()
+
+    cell_range_address.EndRow
+  end
+
+  def used_column_index_max
+    # XCellRange
+    used_cell_range = _used_cell_range()
+
+    # XCellRangeAddressable
+    used_cell_range_addressable = UnoRuntime.queryInterface(
+      Java::ComSunStarSheet::XCellRangeAddressable.java_class,
+      used_cell_range
+    )
+
+    # CellRangeAddress
+    cell_range_address = used_cell_range_addressable.getRangeAddress()
+
+    cell_range_address.EndColumn
+  end
 end
 
 class CalcDocument
