@@ -26,6 +26,8 @@ begin
     ARGV[0], # fods ファイル名
     ARGV[1]  # シート名
   )
+rescue => e
+  $stderr.puts e.message, e.class, e.backtrace
 ensure
   exit
 end
