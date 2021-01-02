@@ -1,3 +1,6 @@
+(2021-01-02) JRubyでLibreOffice Calcのfodsファイルを読み書きするサンプル 2021 - memo88  
+https://memo88.hatenablog.com/entry/2021/01/02/171445
+
 (2019-12-02) JRubyでLibreOffice Calcのfodsファイルを読み書きするサンプル 2019 - memo88  
 https://memo88.hatenablog.com/entry/2019/12/02/230545
 
