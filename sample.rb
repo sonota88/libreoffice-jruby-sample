@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # ライブラリをロード
-require "./libo_calc"
+require_relative "libo_calc"
 
 def main 
   Calc.open("sample.fods") do |doc|

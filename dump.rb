@@ -2,7 +2,7 @@
 
 require "json"
 
-require "./libo_calc"
+require_relative "libo_calc"
 
 def main(file, sheet_name)
   Calc.open(file) do |doc|
