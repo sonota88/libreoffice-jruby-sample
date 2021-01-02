@@ -40,10 +40,4 @@ def main
   end
 end
 
-begin
-  main
-rescue => e
-  $stderr.puts e.message, e.class, e.backtrace
-ensure
-  exit
-end
+main

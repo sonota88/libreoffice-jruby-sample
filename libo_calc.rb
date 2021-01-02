@@ -181,6 +181,17 @@ module Calc
     ensure
       doc.close if doc
     end
+
+    x_desktop = UnoRuntime.queryInterface(
+      Java::ComSunStarFrame::XDesktop.java_class,
+      desktop
+    );
+
+    if x_desktop.terminate
+      # all listeners agree with this request
+    else
+      raise "Failed to terminate"
+    end
   end
 
   def self.arg(name, value)
