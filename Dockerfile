@@ -10,6 +10,8 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /opt
+
 RUN wget --no-check-certificate \
     https://repo1.maven.org/maven2/org/jruby/jruby-dist/9.2.14.0/jruby-dist-9.2.14.0-bin.tar.gz \
   && tar xf jruby-dist-9.2.14.0-bin.tar.gz \
