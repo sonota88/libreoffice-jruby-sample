@@ -129,6 +129,10 @@ class CalcDocument
       end
     end
 
+    if target_index.nil?
+      raise "sheet not found (#{sheet_name})"
+    end
+
     sheet = get_sheet_by_index(target_index)
     return Sheet.new(sheet, sheet_name)
   end
