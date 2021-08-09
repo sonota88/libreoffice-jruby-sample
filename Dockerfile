@@ -13,7 +13,7 @@ RUN apt-get update \
 
 WORKDIR /opt
 
-RUN wget \
+RUN wget --quiet \
     https://repo1.maven.org/maven2/org/jruby/jruby-dist/9.2.14.0/jruby-dist-9.2.14.0-bin.tar.gz \
   && tar xf jruby-dist-9.2.14.0-bin.tar.gz \
   && rm jruby-dist-9.2.14.0-bin.tar.gz
