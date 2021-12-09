@@ -13,8 +13,10 @@ RUN apt-get update \
 
 WORKDIR /opt
 
+ARG JRUBY_VER=9.2.14.0
+
 RUN wget --quiet -O- \
-    https://repo1.maven.org/maven2/org/jruby/jruby-dist/9.2.14.0/jruby-dist-9.2.14.0-bin.tar.gz \
+    https://repo1.maven.org/maven2/org/jruby/jruby-dist/${JRUBY_VER}/jruby-dist-${JRUBY_VER}-bin.tar.gz \
     > jruby.tar.gz \
   && tar xf jruby.tar.gz \
   && rm jruby.tar.gz
