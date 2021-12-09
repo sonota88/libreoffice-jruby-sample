@@ -24,7 +24,7 @@ ENV USER $USER
 
 WORKDIR /home/${USER}
 
-ARG JRUBY_VER=9.2.14.0
+ARG JRUBY_VER=9.3.2.0
 
 RUN wget --quiet -O- \
     https://repo1.maven.org/maven2/org/jruby/jruby-dist/${JRUBY_VER}/jruby-dist-${JRUBY_VER}-bin.tar.gz \
