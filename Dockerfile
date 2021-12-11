@@ -11,6 +11,13 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+# for Sinatra
+RUN apt-get update \
+  && apt-get -y install --no-install-recommends \
+    netbase \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
 ARG USER
 ARG GROUP
 
@@ -32,6 +39,8 @@ RUN wget --quiet -O- \
   && tar xf jruby.tar.gz \
   && rm jruby.tar.gz \
   && mv jruby-${JRUBY_VER} jruby
+
+RUN PATH="/home/${USER}/jruby/bin:${PATH}" jruby -S gem install --no-document sinatra
 
 # --------------------------------
 

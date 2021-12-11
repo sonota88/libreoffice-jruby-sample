@@ -19,7 +19,7 @@ tar xf jruby-dist-9.2.14.0-bin.tar.gz
 docker build \
   --build-arg USER=$USER \
   --build-arg GROUP=$(id -gn) \
-  -t my:libo-jruby .
+  -t my:libo-jruby-webapi-2021 .
 ```
 
 
